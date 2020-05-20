@@ -9,7 +9,7 @@ opt = parser.parse_args()
 card = opt.card
 threshold = opt.threshold
 
-with open('p.txt', 'r+') as file:
+with open('text.txt', 'r+') as file:
     line = file.read()
     nl = []
     for i in [8, 11, 14, 17]:

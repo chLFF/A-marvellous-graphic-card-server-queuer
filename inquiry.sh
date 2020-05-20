@@ -1,31 +1,31 @@
 while true
 do
-    nvidia-smi > p.txt  # output redirection
-    # python ps.py        # text process
+    nvidia-smi > text.txt  # output redirection
+    python process.py        # text process
 
     #-----------------------------------------------#
-    # select cards
+    # select cards, default all cards
     #-----------------------------------------------#
-    # python ps.py --card 1
+    # python process.py --card 1
 
     #-----------------------------------------------#
     # set a used memory threshold
     # threshold = total_momery - your_model_momery
     #-----------------------------------------------#
-    # python ps.py --threshold 2000
-    python ps.py --card 1 --threshold 1000
+    # python process.py --threshold 2000
+    # python process.py --card 1 --threshold 1000
 
-    var=$(cat p.txt)
+    var=$(cat text.txt)
     # echo $var
 
     if [ $var = "0" ]
     then
         echo "run on card #0"
-        CUDA_VISIBLE_DEVICES=0 python alphaWGAN_256_IN_5.py --dataPath './udata/u609_256/' --savePath 'aWGAN_IN_5' --epoches 100000
+        CUDA_VISIBLE_DEVICES=0 python train.py
     elif [ $var = "1" ]
     then
         echo "run on card #1"
-        CUDA_VISIBLE_DEVICES=1 python alphaWGAN_256_SN.py --dataPath './udata/u609_256/' --savePath 'aSNGAN' --epoches 100000
+        CUDA_VISIBLE_DEVICES=1 python train.py
     elif [ $var = "2" ]
     then
         echo "run on card #2"
