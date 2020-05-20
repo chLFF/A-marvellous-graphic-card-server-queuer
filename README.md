@@ -1,4 +1,4 @@
-# A marvellous graphic card server queuing machine
+# A marvellous graphic card server queuer
 
 # Process:
 -1 inquiry.sh inquires the information of graphic card server with nvidia-smi and then redirect the output to text.txt
